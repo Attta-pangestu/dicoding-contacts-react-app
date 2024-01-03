@@ -17,7 +17,7 @@ class HomePage extends React.Component {
 
     searchHandler(keyword) {
         this.setState({keyword });
-        console.log("Jadi ini keywordnya ", keyword);
+        
     }
 
     onDeleteHandler(id) {
@@ -27,7 +27,7 @@ class HomePage extends React.Component {
     }
 
     render() {
-        console.log("Ini List ")
+        console.log("merender ulang");
         return (
             <section>
                 <h2>Daftar Kontak</h2>
