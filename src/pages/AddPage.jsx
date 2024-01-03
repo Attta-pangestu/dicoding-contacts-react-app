@@ -1,10 +1,14 @@
 import React from "react";
 import { addContacts } from "../utils/data";
 import ContactInput from "../components/ContactInput";
+import { useNavigate } from "react-router-dom";
 
 function AddPage() {
+    const navigate = useNavigate();
+
     function onAddContactHandler(contact) {
         addContacts(contact);
+        navigate('/');
     }
 
     return (

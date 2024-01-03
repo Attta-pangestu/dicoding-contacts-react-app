@@ -1,6 +1,7 @@
 import React from 'react';
 import { getContacts, deleteContacts } from '../utils/data';
 import ContactList from '../components/ContactList';
+import SearchBar from '../components/SearchBar';
 
 class HomePage extends React.Component {
     constructor(){
@@ -8,8 +9,15 @@ class HomePage extends React.Component {
 
         this.state = {
             listContacts : getContacts(), 
+            keyword : ''
         }
         this.onDeleteHandler = this.onDeleteHandler.bind(this);
+        this.searchHandler = this.searchHandler.bind(this);
+    }
+
+    searchHandler(keyword) {
+        this.setState({keyword });
+        console.log("Jadi ini keywordnya ", keyword);
     }
 
     onDeleteHandler(id) {
@@ -23,6 +31,7 @@ class HomePage extends React.Component {
         return (
             <section>
                 <h2>Daftar Kontak</h2>
+                <SearchBar keywordUrl={this.state.keyword} searchHandler={this.searchHandler}/>
                 <ContactList contacts={this.state.listContacts} onDelete={this.onDeleteHandler} />
             </section>
         );
