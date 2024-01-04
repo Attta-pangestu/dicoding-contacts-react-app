@@ -1,6 +1,7 @@
 import React from 'react';
 import { getContacts, deleteContacts } from '../utils/data';
 import { useSearchParams } from 'react-router-dom';
+import {FiDelete} from 'react-icons/fi';
 
 import ContactList from '../components/ContactList';
 import SearchBar from '../components/SearchBar';
