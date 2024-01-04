@@ -3,7 +3,7 @@ import {Route, Routes} from 'react-router-dom';
 
 // Import Component and Pages
 import Navigation from "./Navigation";
-import HomePage from '../pages/HomePage';
+import HomePageWrapper from '../pages/HomePage';
 import AddPage from '../pages/AddPage';
 
 class ContactApp extends React.Component {
@@ -17,7 +17,7 @@ class ContactApp extends React.Component {
         </header>
         <main>
         <Routes>
-          <Route path="/" element={<HomePage/>}/>
+          <Route path="/" element={<HomePageWrapper/>}/>
           <Route path="/add" element={<AddPage/>}/>
 
         </Routes>   
