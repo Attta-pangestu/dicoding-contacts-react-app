@@ -63,7 +63,7 @@ class ContactApp extends React.Component {
       <div className="contact-app">
         <header className='contact-app__header'>
           <h1>Aplikasi Kontak</h1>
-          {this.state.authedUser && <Navigation logoutHandler={this.loggedOutHandler} />} 
+          {this.state.authedUser && <Navigation logoutHandler={this.loggedOutHandler} userName={this.state.authedUser.name}/>} 
         </header>
         {this.state.authedUser === null ?
         <main>

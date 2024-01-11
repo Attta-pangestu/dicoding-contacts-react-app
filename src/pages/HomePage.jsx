@@ -1,5 +1,5 @@
 import React from 'react';
-import { getContacts, deleteContacts } from '../utils/data';
+import { getContact } from '../utils/api';
 import { useSearchParams } from 'react-router-dom';
 
 import ContactList from '../components/ContactList';
@@ -9,7 +9,7 @@ import SearchBar from '../components/SearchBar';
 function HomePageWrapper() {
     const [urlSearchParams, setSearchParams] = useSearchParams();
     const searchKeyword = urlSearchParams.get('contact');
-    
+
     function onSearch(keyword) {
         setSearchParams({
             contact: keyword, 
@@ -24,13 +24,21 @@ class HomePage extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            listContacts : getContacts(), 
+            initializingCancel : true,
+            listContacts : [], 
             keyword : props.searchKeyword || '', 
         }
         this.onDeleteHandler = this.onDeleteHandler.bind(this);
         this.searchHandler = this.searchHandler.bind(this);
     }
-
+    
+    async componentDidMount(){
+        const {data} = await getContact();
+        this.setState({
+            listContacts: data ,
+            initializingCancel: false,
+        })
+    }
 
     searchHandler(keyword) {
         this.setState({keyword });
@@ -43,6 +51,9 @@ class HomePage extends React.Component {
     }
 
     render() {
+        if(this.state.initializingCancel) {
+            return null
+        }
         const filteredContact = this.state.listContacts.filter(contact => {
             return  contact.name.toLowerCase().includes(this.state.keyword.toLowerCase());
         })
