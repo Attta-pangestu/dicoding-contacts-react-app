@@ -106,6 +106,14 @@ async function getContact(){
     return ({error: false, data: responseJSON.data})
 }
 
+async function deleteContact(id) {
+    const response = await fetch(BASE_URL + '/contacts/' + id,{
+        method: 'DELETE', 
+        headers: {
+            Authorization : `Bearer ${getAccessToken()}`
+        },
+    } )
+}
 
 
 
@@ -116,6 +124,8 @@ export {
     loggedOut, 
     fetchWithToken,
     getContact, 
+    addContact,
+    deleteContact, 
     getAccessToken, 
     putAccessToken, 
 }
