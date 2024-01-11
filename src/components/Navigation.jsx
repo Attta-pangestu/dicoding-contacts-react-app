@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {FiHome, FiPlusCircle, FiLogOut} from 'react-icons/fi';
 
-function Navigation() {
+function Navigation({logoutHandler}) {
     return (
         <nav className="navigation">
             <ul>
-                <li><Link to="/">Homepage</Link></li>
-                <li><Link to="/add">Add</Link></li>
+                <li><Link to="/"><FiHome /></Link></li>
+                <li><Link to="/add"><FiPlusCircle /></Link></li>
+                <li><button onClick={logoutHandler}><FiLogOut /></button></li>
             </ul>
         </nav>
     );
