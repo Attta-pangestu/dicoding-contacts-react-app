@@ -2,6 +2,7 @@ import React from "react";
 import ContactApp from './components/ContactApp';
 import { BrowserRouter } from "react-router-dom";
 
+
 // styling
 import './styles/style.css';
 
